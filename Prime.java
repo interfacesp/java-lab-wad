@@ -14,6 +14,8 @@ public class Prime {
         for (int number : primes(100)) {
             System.out.println(number);
         }
+
+        // printy(crible(100));
     }
 
 
@@ -39,7 +41,7 @@ public class Prime {
     public static void printy(int [] numbers){
         String sep = "\t";
 
-        for (int i = 1; i < numbers.length; i++) {
+        for (int i = 0; i < numbers.length; i++) {
             String content = i + "[" + numbers[i] + "]" + sep;
 
             System.out.print(content);        
@@ -61,7 +63,7 @@ public static List<Integer> primes(int n) {
     int [] res = crible(n);
 
     for (int i = 2; i < res.length; i++) {
-        if(res[i] == -1 || res[i] == 0){
+        if(res[i] == 0){
             primes.add(i);
         }
     }
@@ -78,7 +80,6 @@ public static List<Integer> primes(int n) {
 public static int [] crible(int n){
 
     final int MARKED = -2;
-    final int PRIME = -1; 
     int [] numbers = generate(n);
 
     int squareRoot = (int) Math.sqrt(n);
@@ -87,7 +88,6 @@ public static int [] crible(int n){
 
     do {
         currentPrime = numbers[0];
-        numbers[currentPrime] = PRIME;
 
         //Marquage multiples
         for (int j = currentPrime * currentPrime; j < numbers.length; j++) {
@@ -95,7 +95,6 @@ public static int [] crible(int n){
                 numbers[j] = MARKED;
             }
         }
-
         int y = currentPrime + 1;  
         while (numbers[y] == MARKED) 
             y++;        
